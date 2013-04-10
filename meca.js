@@ -20,7 +20,8 @@ $.fn.meca = function(action, conf) {
     });
 };
 
-var is_msie6 = ($.browser.msie && $.browser.version < 7);
+var is_msie6 = (typeof document.documentElement.style.maxHeight == "undefined");
+var is_msie = (document.uniqueID);
 
 var filterStyle = function(src, sizing) {
     var dx = 'DXImageTransform.Microsoft.AlphaImageLoader';
@@ -202,7 +203,7 @@ var funcs = {
     },
 
     labelClickable: function() {
-        if(!$.browser.msie) return;
+        if(!is_msie) return;
 
         $(this).click(function() {
             $('#' + $(this).parents('label').attr('for')).focus().click();
